@@ -23,6 +23,20 @@ public struct BrowserView: View {
     }
     
     public var body: some View {
-        Text("Cakes for all")
+        NavigationView {
+            VStack(alignment: .leading, spacing: 8) {
+                BrowserFiltersView()
+                HStack {
+                    Spacer()
+                    Button(action: {}) {
+                        Text("Query Records")
+                    }
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding()
+        .navigationBarTitle("PuffUI Browser")
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
