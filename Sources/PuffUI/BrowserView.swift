@@ -25,7 +25,7 @@ public struct BrowserView: View {
     public var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 8) {
-                BrowserFiltersView()
+                FetchConfigurationView(configuration: coordinator.activeConfiguration)
                 HStack {
                     Spacer()
                     Button(action: {}) {

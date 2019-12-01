@@ -16,16 +16,18 @@
 
 import SwiftUI
 
-internal struct BrowserFiltersView: View {
+internal struct FetchConfigurationView: View {
+    internal var configuration: FetchConfiguration
+    
     var body: some View {
         VStack(spacing: 8) {
-            FilterCard(name: "Container", value: "com.com.com", hasOptions: false)
+            FilterCard(name: "Container", value: configuration.containerIdentifier, hasOptions: false)
             Divider()
-            FilterCard(name: "Database", value: "public", hasOptions: false)
+            FilterCard(name: "Database", value: configuration.databaseScope, hasOptions: false)
             Divider()
-            FilterCard(name: "Zone", value: "_default", hasOptions: false)
+            FilterCard(name: "Zone", value: configuration.zoneName, hasOptions: false)
             Divider()
-            FilterCard(name: "Type", value: "Resource", hasOptions: false)
+            FilterCard(name: "Type", value: configuration.recordType, hasOptions: false)
         }
     }
 }

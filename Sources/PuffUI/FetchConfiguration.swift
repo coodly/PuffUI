@@ -17,17 +17,43 @@
 import Foundation
 import CloudKit
 
-public class Coordinator {
+internal class FetchConfiguration {
     private let container: CKContainer
     private let database: CKDatabase
     private let zone: CKRecordZone
-    private let recordType: String
-    public init(container: CKContainer, database: CKDatabase, zone: CKRecordZone, recordType: String) {
+    internal let recordType: String
+    
+    internal init(container: CKContainer, database: CKDatabase, zone: CKRecordZone, recordType: String) {
         self.container = container
         self.database = database
         self.zone = zone
         self.recordType = recordType
     }
     
-    internal lazy var activeConfiguration = FetchConfiguration(container: self.container, database: self.database, zone: self.zone, recordType: self.recordType)
+    internal var containerIdentifier: String {
+        container.containerIdentifier ?? "-"
+    }
+    
+    internal var databaseScope: String {
+        database.databaseScope.description
+    }
+    
+    internal var zoneName: String {
+        zone.zoneID.zoneName
+    }
+}
+
+extension CKDatabase.Scope: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .public:
+            return "public"
+        case .private:
+            return "private"
+        case .shared:
+            return "private"
+        @unknown default:
+            return "unknown-\(rawValue)"
+        }
+    }
 }
