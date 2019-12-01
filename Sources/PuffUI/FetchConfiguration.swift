@@ -19,8 +19,8 @@ import CloudKit
 
 internal class FetchConfiguration {
     private let container: CKContainer
-    private let database: CKDatabase
-    private let zone: CKRecordZone
+    internal let database: CKDatabase
+    internal let zone: CKRecordZone
     internal let recordType: String
     
     internal init(container: CKContainer, database: CKDatabase, zone: CKRecordZone, recordType: String) {

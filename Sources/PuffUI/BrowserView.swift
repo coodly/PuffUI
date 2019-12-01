@@ -24,18 +24,20 @@ public struct BrowserView: View {
     
     public var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 8) {
-                FetchConfigurationView(configuration: coordinator.activeConfiguration)
-                HStack {
-                    Spacer()
-                    Button(action: {}) {
-                        Text("Query Records")
+            ScrollView {
+                VStack(alignment: .leading, spacing: 8) {
+                    FetchConfigurationView(configuration: coordinator.activeConfiguration)
+                    HStack {
+                        Spacer()
+                        Button(action: coordinator.cursor.fetchRecords ) {
+                            Text("Query Records")
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    FetchedRecordsView(cursor: coordinator.cursor)
                 }
-                Spacer()
+                .padding()
             }
-            .padding()
         .navigationBarTitle("PuffUI Browser")
         }.navigationViewStyle(StackNavigationViewStyle())
     }

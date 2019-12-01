@@ -30,4 +30,5 @@ public class Coordinator {
     }
     
     internal lazy var activeConfiguration = FetchConfiguration(container: self.container, database: self.database, zone: self.zone, recordType: self.recordType)
+    internal lazy var cursor = FetchCursor(config: self.activeConfiguration)
 }
